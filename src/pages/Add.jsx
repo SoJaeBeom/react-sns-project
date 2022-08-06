@@ -1,3 +1,3 @@
 export default function Add() {
-  return <h3>Add Page</h3>;
+  return <h3>글작성 추가 페이스</h3>;
 }
