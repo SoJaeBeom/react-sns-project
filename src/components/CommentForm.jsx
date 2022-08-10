@@ -4,17 +4,22 @@ import styled from "styled-components";
 import { __addComment } from "../redux/modules/commentsSlice";
 
 export default function CommentForm({ postId }) {
+  const date = new Date();
+
   const dispatch = useDispatch();
   const [content, setContent] = useState("");
   const [userName, setUserName] = useState("");
 
   function onSubmitHandler() {
+    let createdAt = date.toLocaleString("ko-kr");
+
     if (content !== "" && userName !== "") {
       dispatch(
         __addComment({
           postId,
           content,
           userName,
+          createdAt,
         })
       );
       setContent("");

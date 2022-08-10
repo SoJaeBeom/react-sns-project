@@ -21,6 +21,20 @@ export const __getPosts = createAsyncThunk(
   }
 );
 
+export const __editPosts = createAsyncThunk(
+  "posts/__editPosts",
+  async (payload, thunkAPI) => {
+    try {
+      await axios.patch(`http://localhost:3001/posts/${payload.id}`, {
+        title: payload.title,
+        content: payload.content,
+      });
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+
 export const postsSlice = createSlice({
   name: "posts",
   initialState,

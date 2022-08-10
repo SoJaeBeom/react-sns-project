@@ -42,6 +42,7 @@ export default function Comment({ comment }) {
           <CommentContent>댓글 : {comment.content}</CommentContent>
         )}
         <CommentUserName>작성자 : {comment.userName}</CommentUserName>
+        <CommentTime>시간 : {comment.createdAt}</CommentTime>
       </CommentBox>
       <CommentEditBtn onClick={onEditHandler}>수정</CommentEditBtn>
       <CommentDeleteBtn onClick={onDeleteHandler}>삭제</CommentDeleteBtn>
@@ -66,6 +67,12 @@ const CommentContent = styled.div`
 const CommentUserName = styled.div`
   width: 300px;
   font-size: 12px;
+  margin: auto;
+`;
+
+const CommentTime = styled.div`
+  width: 300px;
+  font-size: 11px;
   margin: auto;
 `;
 
