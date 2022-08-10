@@ -8,35 +8,35 @@
       "content":"하하",
       "addTime": "2022. 8. 8.",
       "comment":{
-        "commentId":1,
-        "commentUsername":"코멘트네임",
-        "commentContent":"코멘트입니다"
+        "id":3,
+        "username":"코멘트네임",
+        "content":"코멘트입니다"
       }
     },
     {
       "id": 2,
-      "username":"안녕2",
+      "username":"안녕",
       "pw":"password",
-      "title": "제목2",
+      "title": "제목",
       "content":"하하",
       "addTime": "2022. 8. 8.",
       "comment":{
-        "commentId":2,
-        "commentUsername":"코멘트네임",
-        "commentContent":"코멘트입니다"
+        "id":3,
+        "username":"코멘트네임",
+        "content":"코멘트입니다"
       }
     },
     {
       "id": 3,
-      "username":"안녕3",
+      "username":"안녕",
       "pw":"password",
-      "title": "제목3",
+      "title": "제목",
       "content":"하하",
       "addTime": "2022. 8. 8.",
       "comment":{
-        "commentId":3,
-        "commentUsername":"코멘트네임",
-        "commentContent":"코멘트입니다"
+        "id":3,
+        "username":"코멘트네임",
+        "content":"코멘트입니다"
       }
     }
   ]
