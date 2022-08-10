@@ -25,23 +25,23 @@ export const postsSlice = createSlice({
   name: "posts",
   initialState,
   reducers: {},
-  extraReducers: (builder) => {
-    builder.addCase(__getPosts.pending, (state, action) => {
+  extraReducers: {
+    [__getPosts.pending]: (state, action) => {
       state.isLoading = true;
       state.isFinish = false;
-    });
+    },
 
-    builder.addCase(__getPosts.fulfilled, (state, action) => {
+    [__getPosts.fulfilled]: (state, action) => {
       state.isLoading = false;
       state.isFinish = true;
       state.posts = action.payload;
-    });
+    },
 
-    builder.addCase(__getPosts.rejected, (state, action) => {
+    [__getPosts.rejected]: (state, action) => {
       state.isLoading = false;
       state.isFinish = true;
       state.error = action.payload;
-    });
+    },
   },
 });
 

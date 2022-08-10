@@ -67,17 +67,18 @@ export const commentsSlice = createSlice({
   name: "comments",
   initialState,
   reducers: {},
-  extraReducers: (builder) => {
-    builder
-      .addCase(__addComment.fulfilled, (state, action) => {
-        state.comments = [...state.comments, action.payload];
-      })
-      .addCase(__getComment.fulfilled, (state, action) => {
-        state.comments = action.payload;
-      })
-      .addCase(__getComment.rejected, (state, action) => {
-        state.error = action.payload;
-      });
+  extraReducers: {
+    [__addComment.fulfilled]: (state, action) => {
+      state.comments = [...state.comments, action.payload];
+    },
+
+    [__getComment.fulfilled]: (state, action) => {
+      state.comments = action.payload;
+    },
+
+    [__getComment.rejected]: (state, action) => {
+      state.error = action.payload;
+    },
   },
 });
 
