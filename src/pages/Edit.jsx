@@ -3,12 +3,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import Header from "../components/Header";
 import styled from "styled-components";
-import { __getTargetPosts, __editPosts } from "../redux/modules/postsSlice";
+import { __getTargetPosts, __editPosts } from "../redux/modules/detailSlice";
 
 export default function Edit() {
   const { id } = useParams();
   const dispatch = useDispatch();
-  const { posts, isFinish } = useSelector((state) => state.postsSlice);
+  const { posts, isFinish } = useSelector((state) => state.detailSlice);
 
   const [isEditable, setIsEditable] = useState(true);
   const [title, setTitle] = useState(posts.title);

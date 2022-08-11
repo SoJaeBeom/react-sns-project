@@ -12,12 +12,12 @@ function MainList({ id, pw, title, username }) {
 
   return (
     <div>
-      <Modals id={id} pw={pw}></Modals>
-      <span>
-        제목 : {title} | 작성자: {username}{" "}
+      <div key={id}>
+        <span>
+          제목 : {title} | 작성자: {username}{" "}
+        </span>
         <button onClick={onDelete}>삭제</button>
-      </span>
-      {/* <Button onClick={handleOpen}>Open modal</Button> */}
+      </div>
     </div>
   );
 }

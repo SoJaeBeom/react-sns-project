@@ -3,14 +3,14 @@ import CommentContainer from "../components/CommentContainer";
 import Header from "../components/Header";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { __getTargetPosts } from "../redux/modules/postsSlice";
+import { __getTargetPosts } from "../redux/modules/detailSlice";
 import { useParams } from "react-router-dom";
 
 export default function Detail() {
   const dispatch = useDispatch();
   const { id } = useParams();
 
-  const { posts, isFinish } = useSelector((state) => state.postsSlice);
+  const { posts, isFinish } = useSelector((state) => state.detailSlice);
 
   useEffect(() => {
     dispatch(__getTargetPosts(Number(id)));

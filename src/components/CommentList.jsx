@@ -7,7 +7,6 @@ import styled from "styled-components";
 export default function CommentList({ postId }) {
   const dispatch = useDispatch();
   const { comments } = useSelector((state) => state.commentsSlice);
-  console.log(comments);
 
   useEffect(() => {
     dispatch(__getComment(postId));

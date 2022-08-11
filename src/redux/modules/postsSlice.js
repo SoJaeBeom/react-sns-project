@@ -8,6 +8,18 @@ const initialState = {
   error: null,
 };
 
+export const __addPost = createAsyncThunk(
+  "posts/__addPost",
+  async (payload, thunkAPI) => {
+    try {
+      const data = await axios.post("http://localhost:3001/posts", payload);
+      return thunkAPI.fulfillWithValue(data.data);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+
 //리스트 가져오기
 export const getPosts = createAsyncThunk(
   "posts/getPosts",
@@ -88,6 +100,18 @@ export const postsSlice = createSlice({
     [__getTargetPosts.rejected]: (state, action) => {
       state.isLoading = false;
       state.isFinish = true;
+      state.error = action.payload;
+    },
+
+    [__addPost.pending]: (state) => {
+      state.isLoading = true;
+    },
+    [__addPost.fulfilled]: (state, action) => {
+      state.isLoading = false;
+      state.posts = [...state.posts, action.payload];
+    },
+    [__addPost.rejected]: (state, action) => {
+      state.isLoading = false;
       state.error = action.payload;
     },
   },

@@ -20,7 +20,7 @@ function Main() {
             key={post.id}
             id={post.id}
             pw={post.pw}
-            username={post.username}
+            username={post.user}
             title={post.title}
           />
         ))}
