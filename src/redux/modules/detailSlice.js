@@ -14,7 +14,7 @@ export const __getTargetPosts = createAsyncThunk(
   async (payload, thunkAPI) => {
     try {
       const data = await axios.get(
-        `process.env.REACT_APP_URL/posts/${payload}`
+        `https://teamsparta.herokuapp.com/posts/${payload}`
       );
       return thunkAPI.fulfillWithValue(data.data);
     } catch (error) {
@@ -27,10 +27,13 @@ export const __editPosts = createAsyncThunk(
   "detail/__editPosts",
   async (payload, thunkAPI) => {
     try {
-      await axios.patch(`process.env.REACT_APP_URL/posts/${payload.id}`, {
-        title: payload.title,
-        content: payload.content,
-      });
+      await axios.patch(
+        `https://teamsparta.herokuapp.com/posts/${payload.id}`,
+        {
+          title: payload.title,
+          content: payload.content,
+        }
+      );
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
     }

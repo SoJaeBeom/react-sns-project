@@ -12,7 +12,10 @@ export const __addPost = createAsyncThunk(
   "posts/__addPost",
   async (payload, thunkAPI) => {
     try {
-      const data = await axios.post("process.env.REACT_APP_URL/posts", payload);
+      const data = await axios.post(
+        "https://teamsparta.herokuapp.com/posts",
+        payload
+      );
       return thunkAPI.fulfillWithValue(data.data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -25,7 +28,7 @@ export const getPosts = createAsyncThunk(
   "posts/getPosts",
   async (payload, thunkAPI) => {
     try {
-      const data = await axios.get("process.env.REACT_APP_URL/posts");
+      const data = await axios.get("https://teamsparta.herokuapp.com/posts");
       return thunkAPI.fulfillWithValue(data.data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -37,7 +40,7 @@ export const getPosts = createAsyncThunk(
 export const deletePosts = createAsyncThunk(
   "posts/deletetPosts",
   async (id) => {
-    await axios.delete(`process.env.REACT_APP_URL/posts/${id}`);
+    await axios.delete(`https://teamsparta.herokuapp.com/posts/${id}`);
     return { id };
   }
 );
@@ -61,10 +64,13 @@ export const __editPosts = createAsyncThunk(
   "posts/__editPosts",
   async (payload, thunkAPI) => {
     try {
-      await axios.patch(`process.env.REACT_APP_URL/posts/${payload.id}`, {
-        title: payload.title,
-        content: payload.content,
-      });
+      await axios.patch(
+        `https://teamsparta.herokuapp.com/posts/${payload.id}`,
+        {
+          title: payload.title,
+          content: payload.content,
+        }
+      );
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
     }
