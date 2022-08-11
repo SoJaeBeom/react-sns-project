@@ -2,8 +2,12 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import { __addPost } from "../redux/modules/postsSlice";
+import { useNavigate } from 'react-router-dom';
 
 export default function Post(postId) {
+
+  let navigate = useNavigate();
+  
   const dispatch = useDispatch();
   const [user, setUser] = useState("");
   const [pw, SetPw] = useState();
@@ -47,6 +51,7 @@ export default function Post(postId) {
         })
       );
     }
+    navigate('/')
   };
 
   return (
