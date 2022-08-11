@@ -11,7 +11,7 @@ export const __addComment = createAsyncThunk(
   async (payload, thunkAPI) => {
     try {
       const data = await axios.post(
-        `http://localhost:3001/posts/${payload.postId}/comments`,
+        `process.env.REACT_APP_URL/${payload.postId}/comments`,
         payload
       );
       return thunkAPI.fulfillWithValue(data.data);
@@ -26,7 +26,7 @@ export const __getComment = createAsyncThunk(
   async (payload, thunkAPI) => {
     try {
       const data = await axios.get(
-        `http://localhost:3001/posts/${payload}/comments`
+        `process.env.REACT_APP_URL/${payload}/comments`
       );
       return thunkAPI.fulfillWithValue(data.data);
     } catch (error) {
@@ -40,7 +40,7 @@ export const __deleteComment = createAsyncThunk(
   async (payload, thunkAPI) => {
     try {
       await axios
-        .delete(`http://localhost:3001/comments/${payload.id}`)
+        .delete(`process.env.REACT_APP_URL/comments/${payload.id}`)
         .then(thunkAPI.dispatch(__getComment(payload.postId)));
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -53,7 +53,7 @@ export const __editComment = createAsyncThunk(
   async (payload, thunkAPI) => {
     try {
       await axios
-        .patch(`http://localhost:3001/comments/${payload.id}`, {
+        .patch(`process.env.REACT_APP_URL/comments/${payload.id}`, {
           content: payload.text,
         })
         .then(thunkAPI.dispatch(__getComment(payload.postId)));

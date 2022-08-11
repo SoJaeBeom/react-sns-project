@@ -12,7 +12,7 @@ export const __addPost = createAsyncThunk(
   "posts/__addPost",
   async (payload, thunkAPI) => {
     try {
-      const data = await axios.post("http://localhost:3001/posts", payload);
+      const data = await axios.post("process.env.REACT_APP_URL/posts", payload);
       return thunkAPI.fulfillWithValue(data.data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -25,7 +25,7 @@ export const getPosts = createAsyncThunk(
   "posts/getPosts",
   async (payload, thunkAPI) => {
     try {
-      const data = await axios.get("http://localhost:3001/posts");
+      const data = await axios.get("process.env.REACT_APP_URL/posts");
       return thunkAPI.fulfillWithValue(data.data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -37,7 +37,7 @@ export const getPosts = createAsyncThunk(
 export const deletePosts = createAsyncThunk(
   "posts/deletetPosts",
   async (id) => {
-    const res = await axios.delete(`http://localhost:3001/posts/${id}`);
+    const res = await axios.delete(`process.env.REACT_APP_URL/posts/${id}`);
     return { id };
   }
 );
@@ -47,7 +47,9 @@ export const __getTargetPosts = createAsyncThunk(
 
   async (payload, thunkAPI) => {
     try {
-      const data = await axios.get(`http://localhost:3001/posts/${payload}`);
+      const data = await axios.get(
+        `process.env.REACT_APP_URL/posts/${payload}`
+      );
       return thunkAPI.fulfillWithValue(data.data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -59,7 +61,7 @@ export const __editPosts = createAsyncThunk(
   "posts/__editPosts",
   async (payload, thunkAPI) => {
     try {
-      await axios.patch(`http://localhost:3001/posts/${payload.id}`, {
+      await axios.patch(`process.env.REACT_APP_URL/posts/${payload.id}`, {
         title: payload.title,
         content: payload.content,
       });

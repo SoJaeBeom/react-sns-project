@@ -13,7 +13,9 @@ export const __getTargetPosts = createAsyncThunk(
 
   async (payload, thunkAPI) => {
     try {
-      const data = await axios.get(`http://localhost:3001/posts/${payload}`);
+      const data = await axios.get(
+        `process.env.REACT_APP_URL/posts/${payload}`
+      );
       return thunkAPI.fulfillWithValue(data.data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -25,7 +27,7 @@ export const __editPosts = createAsyncThunk(
   "detail/__editPosts",
   async (payload, thunkAPI) => {
     try {
-      await axios.patch(`http://localhost:3001/posts/${payload.id}`, {
+      await axios.patch(`process.env.REACT_APP_URL/posts/${payload.id}`, {
         title: payload.title,
         content: payload.content,
       });
