@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getPosts } from "../redux/modules/postsSlice";
 import MainList from "../components/MainList";
+import Header from "../components/Header";
 
 function Main() {
   const dispatch = useDispatch();
@@ -15,12 +16,13 @@ function Main() {
   if (isFinish) {
     return (
       <div>
+        <Header btnId="Home"/>
         {posts.map((post) => (
           <MainList
             key={post.id}
             id={post.id}
             pw={post.pw}
-            username={post.user}
+            user={post.user}
             title={post.title}
           />
         ))}
