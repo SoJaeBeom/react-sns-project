@@ -38,6 +38,7 @@ export const __getComment = createAsyncThunk(
 export const __deleteComment = createAsyncThunk(
   "comments/__deleteComment",
   async (payload, thunkAPI) => {
+    console.log(payload);
     try {
       await axios
         .delete(`http://localhost:3001/comments/${payload.id}`)

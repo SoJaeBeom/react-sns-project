@@ -3,7 +3,7 @@ import CommentContainer from "../components/CommentContainer";
 import Header from "../components/Header";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { __getPosts } from "../redux/modules/postsSlice";
+import { __getTargetPosts } from "../redux/modules/postsSlice";
 import { useParams } from "react-router-dom";
 
 export default function Detail() {
@@ -13,7 +13,7 @@ export default function Detail() {
   const { posts, isFinish } = useSelector((state) => state.postsSlice);
 
   useEffect(() => {
-    dispatch(__getPosts(Number(id)));
+    dispatch(__getTargetPosts(Number(id)));
   }, [dispatch, id]);
 
   if (isFinish) {

@@ -1,10 +1,32 @@
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getPosts } from "../redux/modules/postsSlice";
+import MainList from "../components/MainList";
 
-export default function Main() {
-  return (
-    <>
-      <Link to="/detail/1">Detail1로 이동</Link>;
-      <Link to="/detail/2">Detail2로 이동</Link>;
-    </>
-  );
+function Main() {
+  const dispatch = useDispatch();
+
+  const { posts, isFinish } = useSelector((state) => state.postsSlice);
+
+  useEffect(() => {
+    dispatch(getPosts());
+  }, [dispatch]);
+
+  if (isFinish) {
+    return (
+      <div>
+        {posts.map((post) => (
+          <MainList
+            key={post.id}
+            id={post.id}
+            pw={post.pw}
+            username={post.username}
+            title={post.title}
+          />
+        ))}
+      </div>
+    );
+  }
 }
+
+export default Main;
