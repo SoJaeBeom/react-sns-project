@@ -3,8 +3,9 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Detail from "./pages/Detail";
 import Main from "./pages/Main";
 import Edit from "./pages/Edit";
+import React from 'react';
 
-function App() {
+const App = () => {
   return (
     <BrowserRouter>
       <Routes>
@@ -14,6 +15,6 @@ function App() {
       </Routes>
     </BrowserRouter>
   );
-}
+};
 
 export default App;

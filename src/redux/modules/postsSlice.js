@@ -1,25 +1,36 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
+import { createAsyncThunk, createSlice, current } from "@reduxjs/toolkit";
+import axios from 'axios';
 
-const initialState = {
-  posts: [],
+
+const initialState={
+  posts:[],
   isLoading: false,
   isFinish: false,
   error: null,
-};
+}
 
-export const __getPosts = createAsyncThunk(
-  "posts/__getPosts",
-
-  async (payload, thunkAPI) => {
-    try {
-      const data = await axios.get(`http://localhost:3001/posts/${payload}`);
-      return thunkAPI.fulfillWithValue(data.data);
-    } catch (error) {
+//리스트 가져오기
+export const getPosts=createAsyncThunk(
+  'posts/getPosts',
+  async(payload, thunkAPI)=>{
+    try{const data=await axios.get('http://localhost:3001/posts');
+    return thunkAPI.fulfillWithValue(data.data);} 
+    catch(error){
       return thunkAPI.rejectWithValue(error);
     }
+
   }
-);
+)
+
+//삭제하기
+export const deletePosts = createAsyncThunk(
+  'posts/deletetPosts',
+    async(id)=>{
+    const res=await axios.delete(`http://localhost:3001/posts/${id}`)
+    return {id};
+  }
+)
+
 
 export const __editPosts = createAsyncThunk(
   "posts/__editPosts",
@@ -39,26 +50,20 @@ export const postsSlice = createSlice({
   name: "posts",
   initialState,
   reducers: {},
-  extraReducers: {
-    [__getPosts.pending]: (state, action) => {
-      state.isLoading = true;
-      state.isFinish = false;
-    },
+  extraReducers:{
 
-    [__getPosts.fulfilled]: (state, action) => {
-      state.isLoading = false;
-      state.isFinish = true;
-      state.posts = action.payload;
+    [getPosts.fulfilled]:(state,action)=>{
+      state.posts=action.payload
     },
+    
+    [deletePosts.fulfilled]: (state, action) =>{
+      let index = current(state.posts).findIndex(({ id }) => id === action.payload.id);
+      state.posts.splice(index, 1);
+    }
+  
+  }
+  
+  })
 
-    [__getPosts.rejected]: (state, action) => {
-      state.isLoading = false;
-      state.isFinish = true;
-      state.error = action.payload;
-    },
-  },
-});
-
-export const {} = postsSlice.actions;
 
 export default postsSlice.reducer;
