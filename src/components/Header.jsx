@@ -8,9 +8,12 @@ export default function Header({ postId, btnId }) {
   if (btnId === "edit") {
     path = `/detail/${postId}`;
     btn = "뒤로가기";
-  } else {
+  } else if (btnId==="detail") {
     path = `/edit/${postId}`;
     btn = "수정";
+  } else {
+    path='/post'
+    btn="글쓰기"
   }
 
   return (

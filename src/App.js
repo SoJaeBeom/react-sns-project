@@ -1,10 +1,10 @@
 import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Detail from "./pages/Detail";
-import Main from "./pages/Main";
 import Edit from "./pages/Edit";
 import Add from "./pages/Add";
 import React from "react";
+import Main from './pages/Main';
 
 const App = () => {
   return (
