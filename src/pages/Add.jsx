@@ -1,3 +1,8 @@
-export default function Add() {
-  return <h3>Add Page</h3>;
+import React from 'react';
+import Post from "../components/Post"
+
+const Add = () => {
+  return <Post/>
 }
+
+export default Add;
