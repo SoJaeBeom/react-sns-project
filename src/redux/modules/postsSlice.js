@@ -32,16 +32,6 @@ export const deletePosts = createAsyncThunk(
 )
 
 
-//추가하기
-export const addPosts=createAsyncThunk(
-  'posts/addPosts',
-  async(newPost)=>{
-    const res=await axios.post('http://localhost:3001/posts',newPost)
-    return res.data;
-  }
-)
-
-
 export const postsSlice = createSlice({
   name: "posts",
   initialState,
@@ -55,9 +45,7 @@ export const postsSlice = createSlice({
     [deletePosts.fulfilled]: (state, action) =>{
       let index = current(state.posts).findIndex(({ id }) => id === action.payload.id);
       state.posts.splice(index, 1);
-    },
-    
-    [addPosts.fulfilled]: (state, { payload }) => [...state.posts, payload]
+    }
   
   }
   
