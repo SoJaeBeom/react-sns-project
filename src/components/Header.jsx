@@ -1,15 +1,25 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-export default function Header() {
+export default function Header({ postId, btnId }) {
+  let path = "";
+  let btn = "";
+
+  if (btnId === "edit") {
+    path = `/detail/${postId}`;
+    btn = "뒤로가기";
+  } else {
+    path = `/edit/${postId}`;
+    btn = "수정";
+  }
+
   return (
     <HeaderGroup>
       <HeaderHome>
         <StyledLink to={"/"}>홈</StyledLink>
       </HeaderHome>
       <HeaderEdit>
-        {/* 임시로 홈으로 가도록 해놓았습니다. */}
-        <StyledLink to={"/"}>수정</StyledLink>
+        <StyledLink to={path}>{btn}</StyledLink>
       </HeaderEdit>
     </HeaderGroup>
   );

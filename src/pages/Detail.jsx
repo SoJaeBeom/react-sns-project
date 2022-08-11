@@ -19,9 +19,11 @@ export default function Detail() {
   if (isFinish) {
     return (
       <DetailBox>
-        <Header />
+        <Header postId={id} btnId="detail" />
         <DetailTitle>{posts.title}</DetailTitle>
-        <DetailImage>{posts.image}</DetailImage>
+        <DetailImageWrapper>
+          <DetailImage src={posts.image}></DetailImage>
+        </DetailImageWrapper>
         <DetailContent>{posts.content}</DetailContent>
         <CommentContainer />
       </DetailBox>
@@ -43,11 +45,15 @@ const DetailTitle = styled.div`
   margin: 10px auto;
 `;
 
-const DetailImage = styled.div`
+const DetailImageWrapper = styled.div`
+  width: 400px;
+  margin: 10px auto;
+`;
+
+const DetailImage = styled.img`
   width: 400px;
   height: 200px;
   border-radius: 8px;
-  border: 1px solid black;
   margin: 10px auto;
 `;
 
