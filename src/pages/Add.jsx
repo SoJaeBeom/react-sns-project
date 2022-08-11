@@ -1,3 +1,8 @@
-export default function Add() {
-  return <h3>글작성 추가 페이스</h3>;
+import React from 'react';
+import Post from "../components/Post"
+
+const Add = () => {
+  return <Post/>
 }
+
+export default Add;
