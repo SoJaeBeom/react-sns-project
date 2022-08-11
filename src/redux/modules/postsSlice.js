@@ -37,7 +37,7 @@ export const getPosts = createAsyncThunk(
 export const deletePosts = createAsyncThunk(
   "posts/deletetPosts",
   async (id) => {
-    const res = await axios.delete(`REACT_APP_URL/posts/${id}`);
+    await axios.delete(`REACT_APP_URL/posts/${id}`);
     return { id };
   }
 );

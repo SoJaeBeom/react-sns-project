@@ -80,6 +80,4 @@ export const commentsSlice = createSlice({
   },
 });
 
-export const {} = commentsSlice.actions;
-
 export default commentsSlice.reducer;
