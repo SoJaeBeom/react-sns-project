@@ -1,17 +1,14 @@
 import React, { useEffect } from "react";
 import { useDispatch,useSelector } from "react-redux";
-import { deletePosts } from '../redux/modules/postSlice';
+import { deletePosts } from '../redux/modules/postsSlice';
 import Modals from './Modals';
 import styled from 'styled-components';
 
 
 function MainList({id, pw, title, username}) {
 
-  const dispatch=useDispatch();
-
   const onDelete=(e)=>{
     e.preventDefault();
-    //modal한테 porps 주자...
   }
   
 

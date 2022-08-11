@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch,useSelector } from "react-redux";
-import { deletePosts } from '../redux/modules/postSlice';
+import { deletePosts } from '../redux/modules/postsSlice';
 import styled from 'styled-components';
 
 export default function Modals({pw, id}) {
@@ -20,7 +20,6 @@ export default function Modals({pw, id}) {
   const onClick=()=>{
     inputPassword=input;
     if(inputPassword==password[0]){
-      console.log("맞음")
       dispatch(deletePosts(id))
     }else return
   }

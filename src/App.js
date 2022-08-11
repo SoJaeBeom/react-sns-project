@@ -1,12 +1,12 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { getPosts } from './redux/modules/postSlice';
+import React from 'react';
 import Main from './redux/pages/Main';
+import Input from './redux/pages/Input';
 
 const App = () => {
   return (
     <>
       <Main />
+      <Input/>
     </>
   );
 };
