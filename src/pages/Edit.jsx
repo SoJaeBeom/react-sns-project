@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import Header from "../components/Header";
 import styled from "styled-components";
-import { __getPosts, __editPosts } from "../redux/modules/postsSlice";
+import { __getTargetPosts, __editPosts } from "../redux/modules/postsSlice";
 
 export default function Edit() {
   const { id } = useParams();
@@ -34,7 +34,7 @@ export default function Edit() {
   };
 
   useEffect(() => {
-    dispatch(__getPosts(Number(id)));
+    dispatch(__getTargetPosts(Number(id)));
   }, [dispatch, id]);
 
   if (isFinish) {
