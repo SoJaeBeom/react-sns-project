@@ -1,17 +1,12 @@
-import "./App.css";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Detail from "./pages/Detail";
-import Main from "./pages/Main";
+import React from 'react';
+import Main from './redux/pages/Main';
 
-function App() {
+const App = () => {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" exact element={<Main />} />
-        <Route path="detail/:id" element={<Detail />} />
-      </Routes>
-    </BrowserRouter>
+    <>
+      <Main />
+    </>
   );
-}
+};
 
 export default App;

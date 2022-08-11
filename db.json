@@ -1,0 +1,30 @@
+{
+  "posts": [
+    {
+      "id": 2,
+      "username": "안녕2",
+      "pw": "password",
+      "title": "제목",
+      "content": "하하",
+      "addTime": "2022. 8. 8.",
+      "comment": {
+        "id": 3,
+        "username": "코멘트네임",
+        "content": "코멘트입니다"
+      }
+    },
+    {
+      "id": 3,
+      "username": "안녕3",
+      "pw": "password",
+      "title": "제목",
+      "content": "하하",
+      "addTime": "2022. 8. 8.",
+      "comment": {
+        "id": 3,
+        "username": "코멘트네임",
+        "content": "코멘트입니다"
+      }
+    }
+  ]
+}
